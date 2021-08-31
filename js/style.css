@@ -1,0 +1,68 @@
+body, html{
+  height: 100%;
+  margin: 0;
+}
+
+canvas{
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.bg{
+  background-image: url("../images/cars_wallpaper.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.buttons{
+  height: 30%;
+  width: 70%;
+}
+
+.choice{
+  margin-top: 5%;
+  height: 100%;
+  width: 20%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border:solid;
+  border-width: 4px;
+}
+
+.h4,.difficulty{
+  margin-top: 2.5%;
+}
+
+.hicks{
+  background-image: url("../images/hicks.jpg");
+}
+.saetta{
+  background-image: url("../images/saetta.jpg");  
+}
+.finn{
+  background-image: url("../images/finn.jpg");  
+}
+
+
+
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.little{
+  width: 15%;
+}
+
+#hearts{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
