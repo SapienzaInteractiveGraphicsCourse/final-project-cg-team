@@ -8,11 +8,3 @@ var textLoader = new THREE.TextureLoader();
 var loader = new THREE.GLTFLoader();
 var clock;
 var context;
-
-/*
-function removeElem(id){
-	var element = document.getElementById(id);
-	element.parentNode.removeChild(element);
-}
-
-*/
