@@ -25,12 +25,12 @@ var tremore = 0;
 
 //street texture material and mesh
 var roadTexture = textLoader.load('../textures/street.jpg');
-var roadMaterial = new THREE.MeshLambertMaterial({map:roadTexture, /*side:THREE.DoubleSide, shading:THREE.FlatShading,*/});
+var roadMaterial = new THREE.MeshLambertMaterial({map:roadTexture,});
 var meshRoad = new THREE.Mesh(new THREE.PlaneBufferGeometry(600, 100000), roadMaterial);
 
 //ground texture material and mesh
 var groundTexture = textLoader.load('../textures/ground.jpg');  //texture loaded
-var groundMaterial = new THREE.MeshLambertMaterial({map:groundTexture, side:THREE.DoubleSide,});
+var groundMaterial = new THREE.MeshLambertMaterial({map:groundTexture,});
 var meshground = new THREE.Mesh(new THREE.PlaneBufferGeometry(20000, 20000), groundMaterial);
 
 
@@ -82,26 +82,9 @@ function Ground(){
 	
 	groundTexture.wrapS = THREE.RepeatWrapping; //This defines how the texture is wrapped horizontally and corresponds to U in UV mapping.
 	groundTexture.wrapT = THREE.RepeatWrapping; //This defines how the texture is wrapped vertically and corresponds to V in UV mapping. The same choices are available as for .wrapS : number.
-	groundTexture.repeat.set(25, 25); //???
-	groundTexture.encoding = THREE.sRGBEncoding; //???
+	groundTexture.repeat.set(25, 25); 
+	groundTexture.encoding = THREE.sRGBEncoding; 
 
-	/*
-	The material uses a non-physically based Lambertian model for calculating reflectance. 
-	This can simulate some surfaces (such as untreated wood or stone) well,
-	 but cannot simulate shiny surfaces with specular highlights (such as varnished wood).
-	 Due to the simplicity of the reflectance and illumination models, performance will be greater 
-	 when using this material over the MeshPhongMaterial, MeshStandardMaterial or MeshPhysicalMaterial,
-	  at the cost of some graphical accuracy.
-	*/
-
-
-
-
-	/*
-	PlaneBufferGeometry is a low memory alternative for PlaneGeometry. the object itself differs in a lot of ways. 
-	for instance, the vertices are located in PlaneBufferGeometry are located in PlaneBufferGeometry.attributes.position 
-	instead of PlaneGeometry.vertices
-	*/
 
 	meshground.position.y = -200;
 	meshground.rotation.x = -Math.PI/2;
