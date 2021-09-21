@@ -29,8 +29,8 @@ var roadMaterial = new THREE.MeshLambertMaterial({map:roadTexture,});
 var meshRoad = new THREE.Mesh(new THREE.PlaneBufferGeometry(600, 100000), roadMaterial);
 
 //ground texture material and mesh
-var groundTexture = textLoader.load('../textures/ground.jpg');  //texture loaded
-var groundMaterial = new THREE.MeshLambertMaterial({map:groundTexture,});
+var groundMaterial = new THREE.MeshLambertMaterial();
+groundMaterial.color.set(0xcd853f);
 var meshground = new THREE.Mesh(new THREE.PlaneBufferGeometry(20000, 20000), groundMaterial);
 
 
@@ -63,12 +63,11 @@ function initAll()
  
 // SKY
 function Sky(){
+	
 	var skyTexture = textLoader.load("../textures/sky.jpg");
 	var skyMaterial = new THREE.MeshBasicMaterial({map:skyTexture});
 	var skyMesh = new THREE.Mesh(new THREE.PlaneGeometry(2000, 300, 32),skyMaterial);
 
-	//planegeometry used to create plane geometries. parameters are: width,height,width sections and height sections (last two optional)
-	///mesh is a Class representing triangular polygon mesh based objects
 
 	skyMesh.position.set( 0 , 139, -250);
 	scene.fog = new THREE.Fog(0xffffff, 500, 10000); 	//white
@@ -77,15 +76,8 @@ function Sky(){
 
 // GROUND
 function Ground(){
-	//ground
-
 	
-	groundTexture.wrapS = THREE.RepeatWrapping; //This defines how the texture is wrapped horizontally and corresponds to U in UV mapping.
-	groundTexture.wrapT = THREE.RepeatWrapping; //This defines how the texture is wrapped vertically and corresponds to V in UV mapping. The same choices are available as for .wrapS : number.
-	groundTexture.repeat.set(25, 25); 
-	groundTexture.encoding = THREE.sRGBEncoding; 
-
-
+	//ground
 	meshground.position.y = -200;
 	meshground.rotation.x = -Math.PI/2;
 	scene.add(meshground);
@@ -96,7 +88,6 @@ function Ground(){
 	roadTexture.repeat.set(1, 25);
 	roadTexture.encoding = THREE.sRGBEncoding;
 	
-	
 	meshRoad.position.y = -199;
 	meshRoad.rotation.x = -Math.PI/2;
 	scene.add(meshRoad);
@@ -105,7 +96,7 @@ function Ground(){
 
 
 
-// LOADER MODELS
+// LOADING MODELS
 function loadModels(){
 	loadGLTF('pump', "../models/pump.gltf", lateralsLoaded);
 	loadGLTF('tree', "../models/tree.gltf", treeLoaded);
@@ -397,7 +388,7 @@ function randomPosX(){
 	return posX;
 }
 
-//load either an cone or a cup randomly and position it randomly
+//load either a cone or a cup randomly and position it randomly
 function loadElements(){
 	var rand = Math.floor(Math.random() * 2);	//random number {0,1}: 0=cone, 1=cup 
 	var posX = randomPosX(); //randomly deciding in which lane spawn it
